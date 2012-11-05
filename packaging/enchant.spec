@@ -12,8 +12,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  hunspell-devel
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(glib-2.0)
-#BuildRequires:  libvoikko-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A library providing an efficient extensible abstraction for dealing
@@ -29,17 +27,6 @@ A library providing an efficient extensible abstraction for dealing
 with different spell checking libraries.
 
 This package provides command-line tools to interact with enchant.
-
-# %package voikko
-# License:        LGPL-2.1+
-# Summary:        Generic Spell Checking Library - Voikko Plugin
-# Group:          Productivity/Text/Spell
-# Provides:       locale(%{name}:fi)
-
-# %description voikko
-# Voikko plugin (Finnish) for enchant, a library providing an efficient
-# extensible abstraction for dealing with different spell checking
-# libraries.
 
 %package zemberek
 License:        LGPL-2.1+
@@ -105,10 +92,6 @@ make %{?_smp_mflags}
 %{_bindir}/enchant
 %{_bindir}/enchant-lsmod
 %doc %{_mandir}/man1/enchant.1*
-
-# %files voikko
-# %defattr(-,root,root)
-# %{_libdir}/enchant/libenchant_voikko.so
 
 %files zemberek
 %defattr(-,root,root)
