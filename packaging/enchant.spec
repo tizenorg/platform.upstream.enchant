@@ -7,6 +7,7 @@ Url:            http://www.abisource.com/
 Group:          Productivity/Text/Spell
 Source:         %{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
+Source1001: 	enchant.manifest
 BuildRequires:  aspell-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hunspell-devel
@@ -70,6 +71,7 @@ to develop applications that require these.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 %configure --with-pic \
@@ -88,16 +90,19 @@ make %{?_smp_mflags}
 %postun -n libenchant -p /sbin/ldconfig
 
 %files tools
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %{_bindir}/enchant
 %{_bindir}/enchant-lsmod
 %doc %{_mandir}/man1/enchant.1*
 
 %files zemberek
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %{_libdir}/enchant/libenchant_zemberek.so
 
 %files -n libenchant
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %doc COPYING.LIB
 %{_libdir}/*.so.*
@@ -109,6 +114,7 @@ make %{?_smp_mflags}
 %{_libdir}/enchant/libenchant_myspell.so
 
 %files devel
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/*.so
